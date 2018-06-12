@@ -39,6 +39,33 @@ Draw.loadPlugin(function (ui) {
             cell.getAttribute('c4Type') === 'Relationship');
     };
 
+    //** VIA VAREJO ELEMENTS  **//
+
+    c4Utils.isC4Service = function (cell) {
+        return (c4Utils.isC4(cell) &&
+            cell.getAttribute('c4Type') === 'Service');
+    };
+
+    c4Utils.isC4ServiceBus = function (cell) {
+        return (c4Utils.isC4(cell) &&
+            cell.getAttribute('c4Type') === 'ServiceBus');
+    };
+
+    c4Utils.isC4MobileApp = function (cell) {
+        return (c4Utils.isC4(cell) &&
+            cell.getAttribute('c4Type') === 'MobileApp');
+    };
+
+    c4Utils.isC4WebApp = function (cell) {
+        return (c4Utils.isC4(cell) &&
+            cell.getAttribute('c4Type') === 'WebApp');
+    };
+
+
+    //** VIA VAREJO ELEMENTS  **//
+
+
+
     c4Utils.createSettingsIcon = function () {
         var img = mxUtils.createImage('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAACpklEQVRIS7VVMU9TURg9nWiZoF0k1MQmlKCREhhowUHaScpWdYHoINUORoKTiT+AhMnE6IDigraL2g10amGhxaFGMJHQJiWxBJcWJl6Zas4H9/leH4VKwl2a13vv+c73nfN911ar1Wq4oGVrBpzxq9VDnYLd3gKbzXYmpabAs2s5bBWKCAwOIPstJ7/dXs/5wNMrGfh6e+BytgvA4pcU3J0d6PNdRWp5FZpWxdhoSPbKlT2sb2wieHPIEszC/H08iQNNQ6m0i1DwBhwOu4BPP3kgwUo7u+CZ4MiwBMlkc3C52tDqcODeRMQUwAROVvlCEbHohFz8mFyUw2SpsuA3A/AsAblHAnPzcXi7PAiNDOsBTOBMce5tAk+nJuWCceUL2/qnt+uKaY9EXrx8h9jDcRMJS1nIqFLZx51IWAB+rP+SsjB11p2sy+V9YUwNuD4ll+B0tplY838LuHLG/YnbOnA9I5WhCrAQ/4zuLg8C/gFrzenjjZ+bKO38QWYtp4s3M/vakqq6rQI8f/ZYHPNmPoE+3zW4Oy+h93qP9IEwV+Ixutfrkbpt5YtIr6yKuI0W60z29DwD5PNF6Ye7kTHRTAf/Xdo1NQbB6Rzl55MCUAs6xNhQvHfZ3WEGpyhkTSecm3lhW9jTDDpz1pxdRifQHUrA/6k5LUz30FHsbr3mxpTr3bL0NYVHUbN/lYDhW0d2PNUtRvDGPm+XWlKbcnnP5POmwE/rUAqlVv1EpNtmZl9hemqycYcezZZtxKLjMlsoMld4NGiZLenljIj2b7YkxAwNZwuBmKKmHUrqAX8/WtVUPGZF0Rc+JBEaGcKBVkV27TtcrnY4HC1gVxvXiY8FM6BQzcxzBmPJjIxVgKZfIpaLs4Nu8g/2n/8lqu/GC31DGw6XMzb+An4I4cvYKbPGAAAAAElFTkSuQmCC');
         img.setAttribute('title', 'Settings');
@@ -47,6 +74,8 @@ Draw.loadPlugin(function (ui) {
         img.style.height = '16px';
         return img;
     };
+
+
     c4Utils.registCodec = function (func) {
         var codec = new mxObjectCodec(new func());
         codec.encode = function (enc, obj) {
@@ -66,6 +95,7 @@ Draw.loadPlugin(function (ui) {
     c4StateHandler = function (state) {
         mxVertexHandler.apply(this, arguments);
     };
+
     c4StateHandler.prototype = new mxVertexHandler();
     c4StateHandler.prototype.constructor = c4StateHandler;
     c4StateHandler.prototype.domNode = null;
@@ -123,6 +153,7 @@ Draw.loadPlugin(function (ui) {
 
     C4Person = function () {
     };
+
     C4Person.prototype.handler = c4StateHandler;
     C4Person.prototype.create = function () {
         var group = new mxCell('', new mxGeometry(0, 0, 160, 180), 'group;rounded=0;labelBackgroundColor=none;fillColor=none;fontColor=#000000;align=center;html=1;');
@@ -276,6 +307,30 @@ Draw.loadPlugin(function (ui) {
     };
     c4Utils.registCodec(C4Relationship);
 
+    // ** VIA VAREJO ELEMENTS **/
+
+    C4Service = function () {
+    };
+
+    C4Service.prototype.handler = c4StateHandler;
+    C4Service.prototype.create = function () {
+        var c4C4Service = new mxCell('', new mxGeometry(0, 70, 160, 110), 'hexagon=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#dae8fc;fontColor=#000000;align=center;arcSize=7;strokeColor=#6c8ebf;');
+        c4C4Service.setVertex(true);
+        c4C4Service.setValue(mxUtils.createXmlDocument().createElement('object'));
+        c4C4Service.setAttribute('label', 'name<div>[Service]</div><div><br></div><div>Beschreibung</div>');
+        c4C4Service.setAttribute('placeholders', '1');
+        c4C4Service.setAttribute('c4Name', 'name');
+        c4C4Service.setAttribute('c4Type', 'Service');
+        c4C4Service.setAttribute('c4Description', 'Beschreibung');
+        c4C4Service.c4 = this;
+        return c4C4Service;
+    };
+
+    c4Utils.registCodec(c4C4Service);
+    
+    // ** VIA VAREJO ELEMENTS **/
+
+        
     // Adds custom sidebar entry
     ui.sidebar.addPalette(sidebar_id, sidebar_title, true, function (content) {
         var verticies = [C4Person, C4SoftwareSystem, C4Container, C4Component, C4ExecutionEnvironment, C4DeploymentNode, C4Database];
@@ -383,6 +438,10 @@ Draw.loadPlugin(function (ui) {
                 case 'body':
                 case 'SoftwareSystem':
                 case 'Container':
+                case 'Service': //** CUSTOM VIA VAREJO* */
+                case 'MobileApp': //** CUSTOM VIA VAREJO* */
+                case 'WebApp': //** CUSTOM VIA VAREJO* */
+                case 'ServiceBus': //** CUSTOM VIA VAREJO* */
                 case 'Component':
                 case 'ExecutionEnvironment':
                 case 'DeploymentNode':
@@ -476,6 +535,21 @@ Draw.loadPlugin(function (ui) {
                             case 'Database':
                                 texts[labelIndex].value = '<span>Database</span><div>[Container:&nbsp;' + c4Technology + ']</div><div><br></div><div>' + c4Description + '</div>';
                                 break;
+                                //** CUSTOM VIA VAREJO *//
+                            case 'Service':
+                                texts[labelIndex].value = '<span>' + c4Name + '</span><div>[Service:&nbsp;<span>' + c4Technology + '</span><span>]</span></div><div><br></div><div>' + c4Description + '</div>';
+                                break;   
+                            case 'ServiceBus':
+                                texts[labelIndex].value = '<span>' + c4Name + '</span><div>[ServiceBus:&nbsp;<span>' + c4Technology + '</span><span>]</span></div><div><br></div><div>' + c4Description + '</div>';
+                                break;     
+                            case 'MobileApp':
+                                texts[labelIndex].value = '<span>' + c4Name + '</span><div>[MobileApp:&nbsp;<span>' + c4Technology + '</span><span>]</span></div><div><br></div><div>' + c4Description + '</div>';
+                                break;
+                            case 'WebApp':
+                                texts[labelIndex].value = '<span>' + c4Name + '</span><div>[WebApp:&nbsp;<span>' + c4Technology + '</span><span>]</span></div><div><br></div><div>' + c4Description + '</div>';
+                                break;
+                               //** CUSTOM VIA VAREJO *//
+                                                       
                         }
                     }
                 }();
