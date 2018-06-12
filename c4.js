@@ -326,7 +326,7 @@ Draw.loadPlugin(function (ui) {
         return c4C4Service;
     };
 
-    c4Utils.registCodec(c4C4Service);
+    c4Utils.registCodec(C4Service);
     
     // ** VIA VAREJO ELEMENTS **/
 
