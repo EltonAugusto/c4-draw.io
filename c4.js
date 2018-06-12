@@ -314,7 +314,7 @@ Draw.loadPlugin(function (ui) {
 
     C4Service.prototype.handler = c4StateHandler;
     C4Service.prototype.create = function () {
-        var c4C4Service = new mxCell('', new mxGeometry(0, 70, 160, 110), 'rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#dae8fc;fontColor=#000000;align=center;arcSize=7;strokeColor=#6c8ebf;');
+        var c4C4Service = new mxHexagon('', new mxGeometry(20, 70, 160, 110), 'rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#dae8fc;fontColor=#000000;align=center;arcSize=7;strokeColor=#6c8ebf;');
         c4C4Service.setVertex(true);
         c4C4Service.setValue(mxUtils.createXmlDocument().createElement('object'));
         c4C4Service.setAttribute('label', 'name<div>[Service]</div><div><br></div><div>Beschreibung</div>');
@@ -331,9 +331,9 @@ Draw.loadPlugin(function (ui) {
     // ** VIA VAREJO ELEMENTS **/
 
         
-    // Adds custom sidebar entry
+    // Adds custom sidebar entry (ADD Via Varejo)
     ui.sidebar.addPalette(sidebar_id, sidebar_title, true, function (content) {
-        var verticies = [C4Person, C4SoftwareSystem, C4Container, C4Component, C4ExecutionEnvironment, C4DeploymentNode, C4Database];
+        var verticies = [C4Person, C4SoftwareSystem, C4Service, C4Container, C4Component, C4ExecutionEnvironment, C4DeploymentNode, C4Database];
         for (var i in verticies) {
             var cell = verticies[i].prototype.create();
             content.appendChild(ui.sidebar.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, cell.label));
