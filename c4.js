@@ -314,7 +314,7 @@ Draw.loadPlugin(function (ui) {
 
     C4Service.prototype.handler = c4StateHandler;
     C4Service.prototype.create = function () {
-        var c4C4Service = new mxCell('', new mxGeometry(0, 70, 160, 110), 'hexagon=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#dae8fc;fontColor=#000000;align=center;arcSize=7;strokeColor=#6c8ebf;');
+        var c4C4Service = new mxCell('', new mxGeometry(0, 70, 160, 110), 'rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#dae8fc;fontColor=#000000;align=center;arcSize=7;strokeColor=#6c8ebf;');
         c4C4Service.setVertex(true);
         c4C4Service.setValue(mxUtils.createXmlDocument().createElement('object'));
         c4C4Service.setAttribute('label', 'name<div>[Service]</div><div><br></div><div>Beschreibung</div>');
