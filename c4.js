@@ -7,7 +7,7 @@
  */
 Draw.loadPlugin(function (ui) {
     var sidebar_id = 'c4';
-    var sidebar_title = 'C4 Notation';
+    var sidebar_title = 'C4 Notation - Via Varejo';
 
     var c4Utils = {};
     c4Utils.isC4 = function (cell) {
