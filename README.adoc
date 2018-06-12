@@ -5,7 +5,7 @@
 C4 Modelling little bit easier (c4-draw.io)
 -------------------------------------------
 
-Github-Pages on: https://tobiashochguertel.github.io/c4-draw.io/
+Github-Pages on: https://eltonaugusto.github.io/c4-draw.io/
 (which is the same as the README.adoc file, but I think it's better to read there...)
 
 [[about]]
@@ -15,7 +15,7 @@ About
 You can make C4 Architecture Software System Models with draw.io.
 
 This is a C4 Modelling plugin for
-https://github.com/tobiashochguertel/c4-draw.io[draw.io], which provides
+https://github.com/eltonaugusto/c4-draw.io[draw.io], which provides
 C4 Notation Elements in draw.io.
 
 [[quick-start]]
@@ -26,7 +26,7 @@ Quick Start
 2.  Save the drawing, or decide later: kbd:[File] -> kbd:[Save] -> kbd:[Option]
 3.  Open the plugin dialog: kbd:[Extras] -> kbd:[Plugins]
 4.  Open the add plugin dialog with an click: kbd:[Add]
-5.  Put in the field kbd:[Enter Value (URL):] the link to the plugin: kbd:[https://tobiashochguertel.github.io/c4-draw.io/c4.js]
+5.  Put in the field kbd:[Enter Value (URL):] the link to the plugin: kbd:[https://eltonaugusto.github.io/c4-draw.io/c4.js]
 6.  Click on kbd:[Apply]
 7.  _Reload the page!_ to see the C4 Notation Shapes in the shape panel (_figure 1_).
 
@@ -93,7 +93,7 @@ Modify the text on the shapes directly rather than using the properties dialog:
 . if you change the text here directly, and as next open the properties dialog of this shape, your changes will get lost because the informations on the shape will be reseted to the values from the properties dialog.
 
 [quote, Tobias Hochgürtel]
-Sorry for these issues, I keep fixing these in my spare time, feel free to create an link:https://github.com/tobiashochguertel/c4-draw.io/issues[issue], or provide an pull request, hints and ideas what We could improve!
+Sorry for these issues, I keep fixing these in my spare time, feel free to create an link:https://github.com/eltonaugusto/c4-draw.io/issues[issue], or provide an pull request, hints and ideas what We could improve!
 
 [[Key-Strokes]]
 Key-Strokes
